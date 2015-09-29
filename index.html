@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es" xml:lang="es">
+    
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="viewport" content="width=device‐width, initial‐scale=1.0, maximum‐scale=1.0, user‐scalable=no">
+    <meta name="description" content="WebApp Rielec Home Control Systems.">
+    <meta name="author" content="@perrobondad">
+    
+    <title>Rielec Home Systems</title>
+    <link rel="icon" href="/images/favicon.png">
+    
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.9.1.js"></script>
+
+    <!-- Núcleo CSS Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Estilos personalizados para esta plantilla -->
+    <link href="css/cover.css" rel="stylesheet">
+    
+</head>
+
+<body>
+    <div class="site-wrapper">
+        
+        <div class="site-wrapper-inner">
+            
+            <div  iv class="cover-container">
+                
+                <div class="inner cover">
+                    
+                    <h2>Rielec Home Control System</h2>
+                    
+                    <BR>
+                        
+                    <p class="lead"> 
+                    <button type="button" id="B_Up" data-loading-text="Loading..." class="btn btn-lg btn-default" autocomplete="off">
+                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>   
+                    </button>
+                    </p>
+                        
+                    <script>
+                        $('#B_Up').on('click', function () {
+                            var $btn = $(this).button('loading')
+                            $.ajax({
+                                data:{valor_estado: estado},
+                                url:'procesa.php',
+                                type:'POST',
+                                success: function(response){
+                                }
+                            });
+                        })
+                    </script>
+                               
+                        
+                    <p class="lead">
+                    <button type="button" id="B_Left" class="btn btn-lg btn-default">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    
+                    <button type="button" id="B_Stop" class="btn btn-lg btn-default">
+                        <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                    </button>
+                    
+                    <button type="button" id="B_Right" class="btn btn-lg btn-default">
+                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                    </p>
+                    
+                    <p class="lead">
+                    <button type="button" id="B_Down" class="btn btn-lg btn-default">
+                        <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                    </button>
+                    </p>
+                    
+                    <div class="mastfoot">
+                        <div class="inner">
+                            <p>Visítenos en <a href="http://www.rielec.es">Rielec</a>, Síguenos en <a href="http://www.facebook.com/Rielec-278091298986800">Facebook</a>.</p>
+                        </div>
+                    </div>
+                        
+                </div>
+                
+            </div>
+        
+        </div>
+        
+    </div>
+        
+</body>
+        
+</html>

@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-    <meta name="viewport" content="width=device‐width, initial‐scale=1.0, maximum‐scale=1.0, user‐scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="WebApp Rielec Home Control Systems.">
     <meta name="author" content="@perrobondad">
     
-    <title>Rielec Home Systems</title>
     <link rel="icon" href="/images/favicon.png">
+    <title>Rielec Home Systems</title>
     
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-1.9.1.js"></script>
@@ -21,6 +21,10 @@
     <!-- Estilos personalizados para esta plantilla -->
     <link href="css/cover.css" rel="stylesheet">
     
+    <script type="text/javascript">
+    var Canal = 1;
+    </script>
+        
 </head>
 
 <body>
@@ -33,51 +37,99 @@
                 <div class="inner cover">
                     
                     <h2>Home Control System</h2>
-                    <img class="block" src="images/Logo-Rielec%20FN2.png" alt="" width="290" height="85"/>
+                    <img class="block" src="images/Logo-Rielec%20FN.png" alt="" width="290" height="85"/>
                     <BR>
                     <BR>
+                    <BR>
+                     
+<!-- ===================================SCRIPT ACTUALIZAR CANAL================================================== -->
+                    <h3>Canal:
+                    <script>document.write(Canal);</script>  
+                    </h3>
                     <BR>
                         
+<!-- ==========================================BOTON UP========================================================= -->                        
                     <p class="lead"> 
-                    <button type="button" id="B_Up" data-loading-text="Loading..." class="btn btn-lg btn-default" autocomplete="off">
-                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>   
+                    <button type="button" id="B_Up" class="btn btn-lg btn-default" onclick="Funcion_Up()">
+                        <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
                     </button>
                     </p>
                         
+<!-- ==========================================SCRIPT UP========================================================= -->                          
                     <script>
-                        $('#B_Up').on('click', function () {
-                            var $btn = $(this).button('loading')
+                        function Funcion_Up() {
                             $.ajax({
-                                data:{valor_estado: estado},
-                                url:'procesa.php',
-                                type:'POST',
-                                success: function(response){
-                                }
+                                type: "POST",
+                                url: "procesa_up.php",
+                                data: { canal: 20 }
+                            }).done(function( msg ) {
                             });
-                        })
+                        }
                     </script>
                                
-                        
+<!-- ==========================================BOTON LEFT======================================================== -->                       
                     <p class="lead">
-                    <button type="button" id="B_Left" class="btn btn-lg btn-default">
+                    <button type="button" id="B_Left" class="btn btn-lg btn-default" onclick="Funcion_Left()">
                         <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
                     </button>
+                        
+<!-- =========================================SCRIPT LEFT======================================================== -->                          
+                    <script>
+                        function Funcion_Left() {
+                            if(Canal>1){
+                                Canal=Canal-1;
+                            }
+                            else{
+                                Canal=15;
+                            }
+                        }
+                    </script>
+
+<!-- ==========================================BOTON STOP======================================================== -->                         
                     &nbsp
                     <button type="button" id="B_Stop" class="btn btn-lg btn-default">
                         <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
                     </button>
                     &nbsp
-                    <button type="button" id="B_Right" class="btn btn-lg btn-default">
+
+<!-- ==========================================BOTON RIGHT======================================================= -->                        
+                    <button type="button" id="B_Right" class="btn btn-lg btn-default" onclick="Funcion_Right()">
                         <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                     </button>
                     </p>
-                    
+                        
+<!-- =========================================SCRIPT RIGHT======================================================= -->                          
+                    <script>
+                        function Funcion_Right() {
+                            if(Canal<15){
+                                Canal=Canal+1;
+                            }
+                            else{
+                                Canal=1;
+                            }
+                        }
+                    </script>
+
+<!-- ==========================================BOTON DOWN========================================================= -->                        
                     <p class="lead">
-                    <button type="button" id="B_Down" class="btn btn-lg btn-default">
+                    <button type="button" id="B_Down" class="btn btn-lg btn-default" onclick="Funcion_Down()">
                         <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
                     </button>
                     </p>
+                        
+<!-- ==========================================SCRIPT DOWN========================================================= -->                       
+                    <script>
+                        function Funcion_Down() {
+                            $.ajax({
+                                type: "POST",
+                                url: "procesa_down.php",
+                                data: { canal: 20 }
+                            }).done(function( msg ) {
+                            });
+                        }
+                    </script>
                     
+<!-- ==========================================LINKS RIELEC========================================================= -->
                     <div class="mastfoot">
                         <div class="inner">
                             <p>Visítenos en <a href="http://www.rielec.es">Rielec</a>.<p>

@@ -1,3 +1,3 @@
 <?php
-exec('sudo python /var/www/pi/leds/apagar.py');
+exec('sudo python /var/www/rielec/Rielec-Home/apagar.py');
 ?>

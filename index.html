@@ -39,14 +39,16 @@
                     <h2>Home Control System</h2>
                     <img class="block" src="images/Logo-Rielec%20FN.png" alt="" width="290" height="85"/>
                     <BR>
-                    <BR>
-                    <BR>
                      
-<!-- ===================================SCRIPT ACTUALIZAR CANAL================================================== -->
-                    <h3>Canal:
-                    <script>document.write(Canal);</script>  
+<!-- =======================================NÚMERO DE CANAL===================================================== -->
+                    <h3>
+                        <p id="NoCanal" onclick="CambiarCanal()">Canal: 1</p>
+                        <script>
+                            function CambiarCanal() {
+                                document.getElementById("NoCanal").innerHTML = "Canal: " + Canal
+                            }
+                        </script>
                     </h3>
-                    <BR>
                         
 <!-- ==========================================BOTON UP========================================================= -->                        
                     <p class="lead"> 
@@ -82,6 +84,7 @@
                             else{
                                 Canal=15;
                             }
+                            CambiarCanal();
                         }
                     </script>
 
@@ -107,6 +110,7 @@
                             else{
                                 Canal=1;
                             }
+                            CambiarCanal();
                         }
                     </script>
 

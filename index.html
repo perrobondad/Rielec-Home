@@ -9,7 +9,7 @@
     <meta name="description" content="WebApp Rielec Home Control Systems.">
     <meta name="author" content="@perrobondad">
     
-    <link rel="icon" href="/images/favicon.png">
+    <link rel="icon" href="/rielec/Rielec-Home/images/favicon.png">
     <title>Rielec Home Systems</title>
     
     <script src="js/bootstrap.min.js"></script>
@@ -78,22 +78,40 @@
 <!-- =========================================SCRIPT LEFT======================================================== -->                          
                     <script>
                         function Funcion_Left() {
-                            if(Canal>1){
+                            if(Canal>0){
                                 Canal=Canal-1;
                             }
                             else{
                                 Canal=15;
                             }
                             CambiarCanal();
+                            $.ajax({
+                                type: "POST",
+                                url: "procesa_left.php",
+                                data: { canal: 20 }
+                            }).done(function( msg ) {
+                            });
                         }
                     </script>
 
 <!-- ==========================================BOTON STOP======================================================== -->                         
                     &nbsp
-                    <button type="button" id="B_Stop" class="btn btn-lg btn-default">
+                    <button type="button" id="B_Stop" class="btn btn-lg btn-default" onclick="Funcion_Stop()">
                         <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
                     </button>
                     &nbsp
+                        
+<!-- ==========================================SCRIPT STOP========================================================= -->                       
+                    <script>
+                        function Funcion_Stop() {
+                            $.ajax({
+                                type: "POST",
+                                url: "procesa_stop.php",
+                                data: { canal: 20 }
+                            }).done(function( msg ) {
+                            });
+                        }
+                    </script>
 
 <!-- ==========================================BOTON RIGHT======================================================= -->                        
                     <button type="button" id="B_Right" class="btn btn-lg btn-default" onclick="Funcion_Right()">
@@ -108,9 +126,15 @@
                                 Canal=Canal+1;
                             }
                             else{
-                                Canal=1;
+                                Canal=0;
                             }
                             CambiarCanal();
+                            $.ajax({
+                                type: "POST",
+                                url: "procesa_right.php",
+                                data: { canal: 20 }
+                            }).done(function( msg ) {
+                            });
                         }
                     </script>
 
